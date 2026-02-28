@@ -51,8 +51,8 @@ proyecto-coches/
 ### 1. Clonar e instalar dependencias
 
 ```bash
-git clone <url-del-repo>
-cd proyecto-coches
+git clone https://github.com/FernandoDapia/Proyecto-6-API-REST.git
+cd Proyecto-6-API-REST
 npm install
 ```
 
