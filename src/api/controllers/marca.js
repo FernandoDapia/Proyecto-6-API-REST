@@ -37,25 +37,21 @@ const putMarca = async (req, res, next) => {
     const { id } = req.params;
     const { coches, ...otherData } = req.body;
 
-    const marcaUpdated = await Marca.findByIdAndUpdate(id, otherData, {
+    const update = { $set: otherData };
+    if (coches && Array.isArray(coches) && coches.length > 0) {
+      update.$addToSet = { coches: { $each: coches } };
+    }
+
+    const marcaUpdated = await Marca.findByIdAndUpdate(id, update, {
       new: true,
       runValidators: true,
-    });
+    }).populate("coches");
 
     if (!marcaUpdated) {
       return res.status(404).json({ error: "Marca no encontrada" });
     }
 
-    if (coches && Array.isArray(coches) && coches.length > 0) {
-      await Marca.findByIdAndUpdate(
-        id,
-        { $addToSet: { coches: { $each: coches } } },
-        { new: true },
-      );
-    }
-
-    const finalMarca = await Marca.findById(id).populate("coches");
-    return res.status(200).json(finalMarca);
+    return res.status(200).json(marcaUpdated);
   } catch (error) {
     return res.status(400).json({ error: error.message });
   }

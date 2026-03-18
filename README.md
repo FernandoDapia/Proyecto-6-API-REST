@@ -61,7 +61,7 @@ npm install
 Crea el archivo `.env` en la raíz del proyecto:
 
 ```env
-BD_URL=mongodb+srv://TU_USUARIO:TU_PASSWORD@cluster0.xxxxx.mongodb.net/cochesDB
+DB_URL=mongodb+srv://TU_USUARIO:TU_PASSWORD@cluster0.xxxxx.mongodb.net/cochesDB
 PORT=3000
 ```
 
@@ -183,7 +183,7 @@ El servidor arranca en `http://localhost:3000`
 
 | Variable | Descripción |
 |---|---|
-| `BD_URL` | URL de conexión a MongoDB Atlas |
+| `DB_URL` | URL de conexión a MongoDB Atlas |
 | `PORT` | Puerto del servidor (por defecto 3000) |
 
 ---

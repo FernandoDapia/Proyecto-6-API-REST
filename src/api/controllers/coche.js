@@ -14,7 +14,7 @@ const getCocheById = async (req, res, next) => {
     const { id } = req.params;
     const coche = await Coche.findById(id);
     if (!coche) {
-      return res.status(200).json({ error: "Coche no econtrado" });
+      return res.status(404).json({ error: "Coche no econtrado" });
     }
     return res.status(200).json(coche);
   } catch (error) {
@@ -38,7 +38,7 @@ const getCochesByCombustible = async (req, res, next) => {
     const coche = await Coche.find({ combustible });
     return res.status(200).json(coche);
   } catch (error) {
-    return res.status(500).json({ error: "Error al filtrar por categoría" });
+    return res.status(500).json({ error: "Error al filtrar por combustible" });
   }
 };
 

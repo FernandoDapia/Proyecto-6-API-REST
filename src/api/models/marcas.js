@@ -26,7 +26,7 @@ const marcaSchema = new mongoose.Schema({
  ]
 },
 {
-  timestaps: true,
+  timestamps: true,
   collection: "marcas"
 });
 
